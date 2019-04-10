@@ -270,7 +270,7 @@ export default class extends Component {
 
   onLayout = (event) => {
     const { width, height } = event.nativeEvent.layout
-    const offset = this.internals.offset = {}
+    const offset = this.internals.offset = {x:0, y:0}
     const state = { width, height }
 
     if (this.state.total > 1) {
@@ -395,7 +395,7 @@ export default class extends Component {
     const state = this.state
     let index = state.index
     if (!this.internals.offset)   // Android not setting this onLayout first? https://github.com/leecade/react-native-swiper/issues/582
-      this.internals.offset = {}
+      this.internals.offset = {x:0,y:0}
     const diff = offset[dir] - this.internals.offset[dir]
     const step = dir === 'x' ? state.width : state.height
     let loopJump = false
